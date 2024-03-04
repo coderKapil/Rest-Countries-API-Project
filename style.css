@@ -7,8 +7,10 @@ body {
   font-family: "Nunito", sans-serif;
 }
 
-.title {
+.title a {
   font-weight: 800;
+  text-decoration: none;
+  color: inherit;
 }
 
 .header-content {
@@ -74,6 +76,8 @@ main {
 }
 
 .search-filter-container {
+  max-width: 1200px;
+  margin-inline: auto;
   margin-top: 32px;
   margin-bottom: 48px;
   display: flex;
