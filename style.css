@@ -72,3 +72,58 @@ main {
   font-size: 24px;
   margin-block: 16px;
 }
+
+.search-filter-container {
+  margin-top: 32px;
+  margin-bottom: 48px;
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.search-container {
+  box-shadow: 0 0 8px 0px rgba(0, 0, 0, 0.15);
+  max-width: 350px;
+  width: 100%;
+  border-radius: 5px;
+  padding: 0 16px;
+  overflow: hidden;
+}
+
+.search-container input {
+  border: none;
+  outline: none;
+  padding: 16px;
+}
+
+.search-container input ::placeholder {
+  color: #999;
+}
+
+.filter-by-region {
+  width: 200px;
+  padding: 16px;
+  border: none;
+  outline: none;
+  box-shadow: 0 0 8px 0px rgba(0, 0, 0, 0.15);
+  border-radius: 5px;
+}
+
+@media (max-width: 768px) {
+  .countries-container {
+    justify-content: center;
+  }
+  .header-content {
+    justify-content: space-between;
+  }
+  .header-content > .title,
+  p {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 700px) {
+  .search-filter-container {
+    flex-direction: column;
+  }
+}
