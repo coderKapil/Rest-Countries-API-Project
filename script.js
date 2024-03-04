@@ -1,9 +1,17 @@
 const countriesContainer = document.querySelector(".countries-container");
 const filterByRegion = document.querySelector(".filter-by-region");
-
+const searchInput = document.querySelector(".search-container input");
+const themeSwitch = document.querySelector(".theme-changer")
+const body = document.querySelector('body')
+const icon = document.querySelector("#icon")
+const mode = document.querySelector("#mode")
+let allCountriesData
 fetch("https://restcountries.com/v3.1/all")
     .then((resp) => resp.json())
-    .then(renderCountries);
+    .then((data) => {
+        renderCountries(data)
+        allCountriesData = data
+    });
 
 filterByRegion.addEventListener('change', (e) => {
     fetch(`https://restcountries.com/v3.1/region/${filterByRegion.value}`)
@@ -28,3 +36,22 @@ function renderCountries(data) {
         countriesContainer.append(countryCard);
     });
 }
+
+searchInput.addEventListener('input', (e) => {
+    // console.log(e.target.value);
+    const filteredcountries = allCountriesData.filter(country => country.name.common.toLowerCase().includes(e.target.value.toLowerCase()))
+    renderCountries(filteredcountries);
+    // console.log(filteredcountries);
+})
+
+icon.addEventListener('click', () => {
+    body.classList.toggle("dark");
+    if (body.classList.contains("dark")) {
+        icon.src = "./images/sun.png"
+        mode.innerText = "Light Mode"
+    }
+    else {
+        icon.src = "./images/moon.png"
+        mode.innerText = "Dark Mode"
+    }
+})

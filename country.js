@@ -11,7 +11,10 @@ const currency = document.querySelector(".currencies")
 const languages = document.querySelector(".languages")
 const borderCountries = document.querySelector(".border-countries")
 const backButton = document.querySelector(".back-btn")
-
+const themeSwitch = document.querySelector(".theme-changer")
+const body = document.querySelector('body')
+const icon = document.querySelector("#icon")
+const mode = document.querySelector("#mode")
 
 backButton.addEventListener('click', () => {
     history.back()
@@ -58,3 +61,17 @@ fetch(`https://restcountries.com/v3.1/name/${countryName}?fullText=true`)
             })
         }
     })
+
+icon.addEventListener('click', () => {
+    body.classList.toggle("dark")
+    if (body.classList.contains("dark")) {
+        icon.src = "./images/sun.png"
+        mode.innerText = "Light Mode"
+    }
+    else {
+        icon.src = "./images/moon.png"
+        mode.innerText = "Dark Mode"
+    }
+
+})
+
